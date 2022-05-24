@@ -17,4 +17,28 @@ export default class Product {
 
     return true;
   }
+
+  get name(): string {
+    return this._name;
+  }
+
+  get price(): number {
+    return this._price;
+  }
+
+  changeName(name: string) {
+    if (name.length === 0) {
+      throw new Error("Product name is required");
+    }
+
+    this._name = name;
+  }
+
+  changePrice(price: number) {
+    if (price === 0) {
+      throw new Error("Price is required");
+    }
+
+    this._price = price;
+  }
 }
