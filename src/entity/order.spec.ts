@@ -15,12 +15,8 @@ describe("Order unit tests", () => {
   });
 
   it("should create a order with success", () => {
-    expect(() => {
-      let order = new Order("", "123", [
-        new OrderItem("i1", "Item 1", 10),
-        new OrderItem("i2", "Item 2", 10),
-      ]);
-    });
+    const item = new OrderItem("i1", "Item 1", 10);
+    expect(item.validate()).toBeTruthy();
   });
 
   it("should calculate total", () => {
