@@ -3,6 +3,7 @@
   "conventionalCommits.scopes": [
     "produto",
     "order",
-    "customer"
+    "customer",
+    "project"
   ]
 }
