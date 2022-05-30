@@ -121,4 +121,12 @@ describe("Customer repository tests", () => {
 
     expect(customers).toEqual(customersFound);
   });
+
+  it("should throw error when customer is not found", async () => {
+    const customerRepository = new CustomerRepository();
+
+    expect(async () => {
+      await customerRepository.find("456ABC");
+    }).rejects.toThrow("Customer not found");
+  });
 });
