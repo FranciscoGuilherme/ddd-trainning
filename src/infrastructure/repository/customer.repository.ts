@@ -17,7 +17,18 @@ export default class CustomerRepository implements CustomerRepositoryInterface {
   }
 
   async update(entity: Customer): Promise<void> {
-    throw new Error("");
+    CustomerModel.update(
+      {
+        name: entity.name,
+        street: entity.address.street,
+        number: entity.address.number,
+        zip: entity.address.zip,
+        city: entity.address.city,
+        active: entity.active,
+        rewardPoints: entity.rewardPoints
+      },
+      { where : { id: entity.id } }
+    );
   }
 
   async find(id: string): Promise<Customer> {
