@@ -103,4 +103,22 @@ describe("Customer repository tests", () => {
       rewardPoints: customerFound.rewardPoints
     })
   });
+
+  it("should find all customers", async () => {
+    const customerRepository = new CustomerRepository();
+    const customers = [
+      new Customer("c1", "Customer 1"),
+      new Customer("c2", "Customer 2"),
+      new Customer("c3", "Customer 3")
+    ];
+    
+    customers.forEach(async customer => {
+      customer.address = new Address("Street", 10, "00000-000", "City");
+      await customerRepository.create(customer);
+    });
+
+    const customersFound = await customerRepository.findAll();
+
+    expect(customers).toEqual(customersFound);
+  });
 });
