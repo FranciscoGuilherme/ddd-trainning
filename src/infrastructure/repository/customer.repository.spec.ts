@@ -81,4 +81,26 @@ describe("Customer repository tests", () => {
       rewardPoints: 100
     });
   });
+
+  it("should find a user by ID", async () => {
+    const customerRepository = new CustomerRepository();
+    const customer = new Customer("c1", "Customer 1");
+    const address = new Address("Street", 10, "02343-098", "City");
+    customer.address = address;
+
+    await customerRepository.create(customer);
+    const customerModel = await CustomerModel.findOne({ where: { id: "c1" } });
+    const customerFound = await customerRepository.find(customer.id);
+
+    expect(customerModel.toJSON()).toStrictEqual({
+      id: customerFound.id,
+      name: customerFound.name,
+      street: customerFound.address.street,
+      number: customerFound.address.number,
+      zip: customerFound.address.zip,
+      city: customerFound.address.city,
+      active: customerFound.active,
+      rewardPoints: customerFound.rewardPoints
+    })
+  });
 });
