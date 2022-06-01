@@ -6,6 +6,7 @@
     "customer",
     "project",
     "repository",
-    "config"
+    "config",
+    "event"
   ]
 }
