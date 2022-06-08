@@ -2,3 +2,4 @@ memory
 dist/
 coverage/
 node_modules/
+.history/
