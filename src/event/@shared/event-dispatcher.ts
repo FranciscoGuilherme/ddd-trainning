@@ -7,7 +7,7 @@ export default class EventDispatcher implements EventDispatcherInterface {
 
   get getEventHandlers(): { [eventName: string]: EventHandlerInterface[] } {
     return this.eventHandlers;
-  };
+  }
 
   notify(event: EventInterface): void {
     const eventName = event.constructor.name;
@@ -18,14 +18,20 @@ export default class EventDispatcher implements EventDispatcherInterface {
     }
   }
 
-  register(eventName: string, eventHandler: EventHandlerInterface<EventInterface>): void {
+  register(
+    eventName: string,
+    eventHandler: EventHandlerInterface<EventInterface>
+  ): void {
     if (!this.eventHandlers[eventName]) {
       this.eventHandlers[eventName] = [];
     }
     this.eventHandlers[eventName].push(eventHandler);
   }
 
-  unregister(eventName: string, eventHandler: EventHandlerInterface<EventInterface>): void {
+  unregister(
+    eventName: string,
+    eventHandler: EventHandlerInterface<EventInterface>
+  ): void {
     if (this.eventHandlers[eventName]) {
       const index = this.eventHandlers[eventName].indexOf(eventHandler);
       if (index !== -1) {
