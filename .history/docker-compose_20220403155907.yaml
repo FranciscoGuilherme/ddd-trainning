@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  app-cpf:
+    build: .
+    container_name: app-cpf
+    volumes:
+      - .:/home/node/app
+    ports:
+      - 8080:8080
