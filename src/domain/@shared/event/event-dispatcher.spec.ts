@@ -1,13 +1,13 @@
-import Address from "../../domain/entity/address";
-import Customer from "../../domain/entity/customer";
-import CustomerCreatedEvent from "../customer/customer-created.event";
-import CustomerChangeAddressEvent from "../customer/customer-change-address.event";
+import Customer from "../../customer/entity/customer";
+import CustomerChangeAddressEvent from "../../customer/events/customer-change-address.event";
+import CustomerCreatedEvent from "../../customer/events/customer-created.event";
+import Log1WhenCustomerIsCreatedHandler from "../../customer/events/handlers/log-1-when-customer-is-created.handler";
+import Log2WhenCustomerIsCreatedHandler from "../../customer/events/handlers/log-2-when-customer-is-created.handler";
+import LogWhenCustomerChangeAddressHandler from "../../customer/events/handlers/log-when-customer-change-address.handler";
+import Address from "../../customer/value-object/address";
+import SendEmailWhenProductIsCreatedHandler from "../../product/event/handlers/send-email-when-product-is-created.handler";
+import ProductCreatedEvent from "../../product/event/product-created.event";
 import EventDispatcher from "./event-dispatcher";
-import SendEmailWhenProductIsCreatedHandler from "../product/handlers/send-email-when-product-is-created.handler";
-import ProductCreatedEvent from "../product/product-created.event";
-import Log1WhenCustomerIsCreatedHandler from "../customer/handlers/log-1-when-customer-is-created.handler";
-import Log2WhenCustomerIsCreatedHandler from "../customer/handlers/log-2-when-customer-is-created.handler";
-import LogWhenCustomerChangeAddressHandler from "../customer/handlers/log-when-customer-change-address.handler";
 
 describe("Domain events tests", () => {
   it("should register an event handler", () => {
